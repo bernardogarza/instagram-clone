@@ -1,9 +1,22 @@
+import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import loginIphoneImage from '../assets/images/iphone-with-profile.jpg';
 import loginLogo from '../assets/images/logo.png';
 import * as ROUTES from '../constants/routes';
+import FirebaseContext from '../context/firebase';
 
 const Login = () => {
+  const { firebase } = useContext(FirebaseContext);
+  const [emailAdress, setEmailAdress] = useState('');
+  const [password, setPassword] = useState('');
+
+  const [error, setError] = useState('');
+  const isInvalid = password === '' || emailAdress === '';
+
+  useEffect(() => {
+    document.title = 'Login | Instagram Clone';
+  }, []);
+
   return (
     <div className="container flex mx-auto max-w-screen-md items-center h-screen">
       <div className="flex w-3/5">
@@ -18,16 +31,26 @@ const Login = () => {
             <input
               aria-label="Enter your email adress"
               className="text-sm w-full mr-3 py-5 px-4 h-2 border rounded mb-2"
-              type="email"
+              type="text"
               placeholder="Email adress"
+              value={emailAdress}
+              onChange={({ target }) => setEmailAdress(target.value)}
             />
             <input
               aria-label="Enter your password"
               className="text-sm w-full mr-3 py-5 px-4 h-2 border rounded mb-2"
               type="password"
               placeholder="Password"
+              value={password}
+              onChange={({ target }) => setPassword(target.value)}
             />
-            <button type="submit" className={`bg-blue-500 text-white w-full rounded h-8 font-bold`}>
+            <button
+              disabled={isInvalid}
+              type="submit"
+              className={`${
+                isInvalid ? 'bg-blue-300 cursor-not-allowed' : 'bg-blue-500'
+              } text-white w-full rounded h-8 font-bold`}
+            >
               Log In
             </button>
           </form>
