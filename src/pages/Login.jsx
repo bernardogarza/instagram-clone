@@ -53,7 +53,7 @@ const Login = () => {
               type="text"
               placeholder="Email adress"
               value={emailAdress}
-              onChange={({ target }) => setEmailAdress(target.value)}
+              onChange={({ target }) => setEmailAdress(target.value.toLowerCase())}
             />
             <input
               aria-label="Enter your password"
@@ -61,7 +61,7 @@ const Login = () => {
               type="password"
               placeholder="Password"
               value={password}
-              onChange={({ target }) => setPassword(target.value)}
+              onChange={({ target }) => setPassword(target.value.toLowerCase())}
             />
             <button
               disabled={isInvalid}
