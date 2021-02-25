@@ -1,7 +1,14 @@
+import Skeleton from 'react-loading-skeleton';
+
 const Timeline = () => {
+  const photos = [1, 2, 3, 4, 5];
   return (
-    <div>
-      <p>Timeline</p>
+    <div className="container col-span-2">
+      {!photos ? (
+        <Skeleton count={4} width={640} height={500} className="mb-5" />
+      ) : (
+        photos.map((content) => <p>I will be a photo!</p>)
+      )}
     </div>
   );
 };
