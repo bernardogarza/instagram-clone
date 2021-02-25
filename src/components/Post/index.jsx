@@ -7,8 +7,8 @@ import Image from './Image';
 
 const Post = ({ content }) => {
   return (
-    <div>
-      <p>Post component</p>
+    <div className="rounded col-span-4 border bg-white mb-16">
+      <Image src={content.imageSrc} caption={content.caption} />
     </div>
   );
 };

@@ -1,8 +1,8 @@
-const Image = () => {
+const Image = ({ src, caption }) => {
   return (
-    <div>
-      <p>Image</p>
-    </div>
+    <>
+      <img src={src} alt={caption} />
+    </>
   );
 };
 
