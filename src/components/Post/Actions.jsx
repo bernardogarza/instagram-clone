@@ -6,10 +6,8 @@ const Actions = ({ docId, totalLikes, likedPhoto, handleFocus }) => {
   const {
     user: { uid: userId = '' },
   } = useContext(UserContext);
-
   const [toggleLiked, setToggleLiked] = useState(likedPhoto);
   const [likes, setLikes] = useState(totalLikes);
-
   const { firebase, FieldValue } = useContext(FirebaseContext);
 
   const handleToggleLiked = async () => {
@@ -25,6 +23,7 @@ const Actions = ({ docId, totalLikes, likedPhoto, handleFocus }) => {
 
     setLikes((likes) => (toggleLiked ? likes - 1 : likes + 1));
   };
+
   return (
     <>
       <div className="flex justify-between p-4">

@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import FirebaseContext from '../context/firebase';
 
 import instagramLogo from '../assets/images/logo.png';
-import noAvatar from '../assets/images/avatars/no-avatar.png';
 
 import * as ROUTES from '../constants/routes';
 import UserContext from '../context/user';
@@ -74,7 +73,7 @@ const Header = () => {
                   <Link to={`/p/${user.displayName}`}>
                     <img
                       className="rounded-full h-8 w-8 flex"
-                      src={noAvatar}
+                      src={`images/avatars/${user.displayName}.jpg`}
                       alt={`${user.displayName} Profile`}
                     />
                   </Link>

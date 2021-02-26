@@ -1,3 +1,5 @@
+import { useContext, useState } from 'react';
+
 const AddComment = () => {
   return (
     <div>
