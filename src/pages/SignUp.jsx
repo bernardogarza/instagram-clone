@@ -43,7 +43,7 @@ const SignUp = () => {
             username: username.toLowerCase(),
             fullName,
             emailAddress: emailAddress.toLowerCase(),
-            following: ['V7gyFEgHl3gMnpfavLhwLvKFtLK2'],
+            following: ['V7gyFEgHl3gMnpfavLhwLvKFtLK2', '2'],
             followers: [],
             dateCreated: Date.now(),
           });

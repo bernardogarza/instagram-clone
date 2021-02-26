@@ -36,7 +36,7 @@ const Actions = ({ docId, totalLikes, likedPhoto, handleFocus }) => {
               }
             }}
             className={`w-8 mr-4 select-none cursor-pointer ${
-              toggleLiked ? 'fill-current text-red' : 'text-black'
+              toggleLiked ? 'fill-current text-red-600' : 'text-black'
             }`}
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
