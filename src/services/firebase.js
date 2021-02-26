@@ -44,3 +44,14 @@ export const getUserFollowedPhotos = async (userId, followingUserIds) => {
   );
   return photosWithUserDetails;
 };
+
+export const getSuggestedProfiles = async (userId) => {
+  const result = await firebase.firestore().collection('users').limit(10).get();
+  const [{ following: userFollowing = [] }] = result.docs
+    .map((user) => user.data())
+    .filter((profile) => profile.userId === userId);
+
+  return result.docs
+    .map((user) => ({ ...user.data(), docId: user.id }))
+    .filter((profile) => profile.userId !== userId && !userFollowing.includes(profile.userId));
+};
