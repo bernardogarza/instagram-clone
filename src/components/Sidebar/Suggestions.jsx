@@ -28,7 +28,7 @@ const Suggestions = ({ userId }) => {
             key={profile.docId}
             userDocId={profile.docId}
             username={profile.username}
-            profielId={profile.userId}
+            profileId={profile.userId}
             userId={userId}
           />
         ))}
