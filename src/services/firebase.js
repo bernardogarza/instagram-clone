@@ -92,3 +92,33 @@ export const getUserByUsername = async (username) => {
 
   return user.length > 0 ? user : false;
 };
+
+export const getUserIdByUsername = async (username) => {
+  const result = await firebase
+    .firestore()
+    .collection('users')
+    .where('username', '==', username)
+    .get();
+
+  const [{ userId = null }] = result.docs.map((item) => ({
+    ...item.data(),
+  }));
+
+  return userId;
+};
+
+export const getUserPhotosByUsername = async (username) => {
+  const userId = await getUserIdByUsername(username);
+  const result = await firebase
+    .firestore()
+    .collection('photos')
+    .where('userId', '==', userId)
+    .get();
+
+  const photos = result.docs.map((item) => ({
+    ...item.data(),
+    docId: item.id,
+  }));
+
+  return photos;
+};
