@@ -16,15 +16,15 @@ const UserProfile = ({ username }) => {
   );
 
   useEffect(() => {
-    const getProfileInfoAndPhotos = async () => {
+    async function getProfileInfoAndPhotos() {
       const [{ ...user }] = await getUserByUsername(username);
       const photos = await getUserPhotosByUsername(username);
 
-      dispatch({ profie: user, photosCollection: photos, followerCount: user.followers.length });
-    };
-
+      dispatch({ profile: user, photosCollection: photos, followerCount: user.followers.length });
+    }
     getProfileInfoAndPhotos();
   }, [username]);
+
   return (
     <>
       <Header

@@ -1,7 +1,14 @@
 import { useEffect, useState } from 'react';
+import Skeleton from 'react-loading-skeleton';
 import useUser from '../../hooks/useUser';
 
-const Header = ({ username, photosCount, followerCount, setFollowerCount, profile }) => {
+const Header = ({
+  username,
+  photosCount,
+  followerCount,
+  setFollowerCount,
+  profile: { docId: profileDocId, userId: profileUserId, fullName, following = [] },
+}) => {
   const { user } = useUser();
   const [isFollowingProfile, setIsFollowingProfile] = useState(false);
   const activeBtnFollow = user.username && user.usename !== username;
@@ -27,6 +34,27 @@ const Header = ({ username, photosCount, followerCount, setFollowerCount, profil
               {isFollowingProfile ? 'Unfollow' : 'Follow'}
             </button>
           )}
+        </div>
+        <div className="container flex mt-4">
+          {followerCount === undefined || following === undefined ? (
+            <Skeleton width={677} height={24} count={1} />
+          ) : (
+            <>
+              <p className="mr-10">
+                <span className="font-bold">{photosCount}</span> photos
+              </p>
+              <p className="mr-10">
+                <span className="font-bold">{followerCount}</span> {''}
+                {followerCount === 1 ? 'follower' : 'followers'}
+              </p>
+              <p className="mr-10">
+                <span className="font-bold">{following.length}</span> following
+              </p>
+            </>
+          )}
+        </div>
+        <div className="container mt-4">
+          <p className="font-medium">{!fullName ? <Skeleton count={1} height={24} /> : fullName}</p>
         </div>
       </div>
     </div>
