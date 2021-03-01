@@ -77,3 +77,18 @@ export const updateFollowedUserFollowers = async (docId, followingUserId, isFoll
         : FieldValue.arrayUnion(followingUserId),
     });
 };
+
+export const getUserByUsername = async (username) => {
+  const result = await firebase
+    .firestore()
+    .collection('users')
+    .where('username', '==', username)
+    .get();
+
+  const user = result.docs.map((item) => ({
+    ...item.data(),
+    docId: item.id,
+  }));
+
+  return user.length > 0 ? user : false;
+};
