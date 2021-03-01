@@ -6,7 +6,7 @@ import Photos from './Photos';
 const reducer = (state, newState) => ({ ...state, ...newState });
 const initialState = {
   profile: {},
-  photosCollection: [],
+  photosCollection: null,
   followerCount: 0,
 };
 const UserProfile = ({ username }) => {
@@ -16,12 +16,12 @@ const UserProfile = ({ username }) => {
   );
 
   useEffect(() => {
-    async function getProfileInfoAndPhotos() {
+    const getProfileInfoAndPhotos = async () => {
       const [{ ...user }] = await getUserByUsername(username);
       const photos = await getUserPhotosByUsername(username);
 
       dispatch({ profile: user, photosCollection: photos, followerCount: user.followers.length });
-    }
+    };
     getProfileInfoAndPhotos();
   }, [username]);
 
