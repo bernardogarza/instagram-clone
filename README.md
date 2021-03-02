@@ -8,7 +8,7 @@ This is an Instagram clone app that was built using React, React Router and Fire
 
 ## Live Demo
 
-https://instagram-clone-bg.netlify.app/
+<a href="https://instagram-clone-bg.netlify.app/" target="_blank">https://instagram-clone-bg.netlify.app/</a>
 
 <br>
 <br>
