@@ -4,6 +4,7 @@ import './App.css';
 
 import * as ROUTES from './constants/routes';
 import UserContext from './context/user';
+import IsUserLoggedIn from './helpers/IsUserLoggedIn';
 import useAuthListener from './hooks/useAuthListener';
 
 /*
@@ -28,8 +29,12 @@ function App() {
       <Router>
         <Suspense fallback={<p>Loading...</p>}>
           <Switch>
-            <Route path={ROUTES.LOGIN} component={Login} />
-            <Route path={ROUTES.SIGN_UP} component={SignUp} />
+            <IsUserLoggedIn user={user} loggedInPath={ROUTES.DASHBOARD} path={ROUTES.LOGIN}>
+              <Login />
+            </IsUserLoggedIn>
+            <IsUserLoggedIn user={user} loggedInPath={ROUTES.DASHBOARD} path={ROUTES.SIGN_UP}>
+              <SignUp />
+            </IsUserLoggedIn>
             <Route path={ROUTES.PROFILE} component={Profile} />
             <Route path={ROUTES.DASHBOARD} component={Dashboard} exact />
             <Route component={NotFound} />
