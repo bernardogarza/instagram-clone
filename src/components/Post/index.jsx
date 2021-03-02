@@ -1,6 +1,5 @@
 import { useRef } from 'react';
 import Actions from './Actions';
-import AddComment from './AddComment';
 import Comments from './Comments';
 import Footer from './Footer';
 import Header from './Header';
