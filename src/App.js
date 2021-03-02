@@ -5,6 +5,7 @@ import './App.css';
 import * as ROUTES from './constants/routes';
 import UserContext from './context/user';
 import IsUserLoggedIn from './helpers/IsUserLoggedIn';
+import ProtectedRoute from './helpers/ProtectedRoute';
 import useAuthListener from './hooks/useAuthListener';
 
 /*
@@ -36,7 +37,9 @@ function App() {
               <SignUp />
             </IsUserLoggedIn>
             <Route path={ROUTES.PROFILE} component={Profile} />
-            <Route path={ROUTES.DASHBOARD} component={Dashboard} exact />
+            <ProtectedRoute user={user} path={ROUTES.DASHBOARD} exact>
+              <Dashboard />
+            </ProtectedRoute>
             <Route component={NotFound} />
           </Switch>
         </Suspense>
