@@ -1,6 +1,13 @@
 # Instagram Clone
 This is an Instagram clone app that was built using React, React Router and Firebase.
 
+## Credentials
+Please, use this email and password to login.
+
+<b>email:</b> john@doe.com
+
+<b>password:</b> 123456
+
 
 ## Author
 
