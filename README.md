@@ -3,7 +3,7 @@ This is an Instagram clone app that was built using React, React Router and Fire
 
 
 ## Credentials
-Please, use this email and password to login.
+Please, use this email and password to log in. Writes are limited to that user for security purposes.
 
 <b>email:</b> john@doe.com
 
